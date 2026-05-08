@@ -103,8 +103,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38e46e11c967b0c41b2f5237b9a3b166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FreeFallSimulation
-  initialPosition: {x: 10, y: 0, z: 0}
-  initialVelocity: {x: -10, y: 10, z: 0}
+  initialPosition: {x: -10, y: 0, z: 0}
+  initialVelocity: {x: 10, y: 10, z: 0}
   gravity: {x: 0, y: -9.81, z: 0}
   dragCoefficient: 0.1
   massFactor: 1
@@ -112,5 +112,5 @@ MonoBehaviour:
   friction: 0.2
   collisionMask:
     serializedVersion: 2
-    m_Bits: 16
+    m_Bits: 64
   skin: 0.001

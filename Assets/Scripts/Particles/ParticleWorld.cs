@@ -4,6 +4,7 @@ using UnityEngine;
 public class ParticleWorld : MonoBehaviour
 {
     private static List<Particle> particles = new();
+    private static List<IForceGenerator> forceGenerators = new();
 
     public static void Register(Particle p)
     {
@@ -14,6 +15,18 @@ public class ParticleWorld : MonoBehaviour
     {
         particles.Remove(p);
     }
+
+    public static void Register(IForceGenerator g)
+    {
+        if (!forceGenerators.Contains(g)) forceGenerators.Add(g);
+    }
+
+    public static void Unregister(IForceGenerator g)
+    {
+        forceGenerators.Remove(g);
+    }
+
+    public static IReadOnlyList<Particle> All => particles;
 
     private void OnEnable()
     {
@@ -31,16 +44,19 @@ public class ParticleWorld : MonoBehaviour
 
     private void Step(float dt)
     {
-        // 1. Integración: cada partícula actualiza su velocidad según fuerzas
+        // 0. Generadores de fuerza (resortes, mouse, etc.) acumulan fuerzas.
+        foreach (IForceGenerator g in forceGenerators) g.ApplyForces(dt);
+
+        // 1. Integración: cada partícula consume fuerzas → velocidad.
         foreach (Particle p in particles) p.Integrate(dt);
 
-        // 2. Colisiones contra el mundo
+        // 2. Colisiones contra el mundo.
         foreach (Particle p in particles) p.Move(dt);
 
-        // 3. Colisiones entre partículas
+        // 3. Colisiones entre partículas.
         ResolveParticlePairs();
 
-        // 4. Sincronizar visuales
+        // 4. Sincronizar visuales.
         foreach (Particle p in particles) p.UpdateVisuals();
     }
 
