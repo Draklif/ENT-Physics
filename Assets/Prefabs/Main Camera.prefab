@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 2956915846179318766}
   - component: {fileID: 346918347219602111}
   - component: {fileID: 8495425233201276916}
+  - component: {fileID: 1848267423508953581}
+  - component: {fileID: 4623216529957343508}
+  - component: {fileID: 3560208583734857099}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -157,3 +160,54 @@ MonoBehaviour:
   maxForce: 500
   throwStrength: 8
   maxThrowImpulse: 40
+--- !u!114 &1848267423508953581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099956739336466976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf84811657400574d83e48785ace704b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FreeCameraController
+  moveSpeed: 6
+  boostMultiplier: 2
+  lookSensitivity: 0.15
+  minPitch: -85
+  maxPitch: 85
+--- !u!114 &4623216529957343508
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099956739336466976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed45efc5b4821447b68588ce59d07df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParticlePinner
+  cam: {fileID: 6137402343194340638}
+  pickRadiusPadding: 0.1
+  stiffness: 500
+  damping: 20
+--- !u!114 &3560208583734857099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3099956739336466976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d83be2fbbec04e42add69a77f483285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ParticleLinker
+  cam: {fileID: 6137402343194340638}
+  pickRadiusPadding: 0.1
+  stiffness: 80
+  damping: 1
+  restLength: 0
+  pendingColor: {r: 0.2, g: 0.8, b: 1, a: 1}
